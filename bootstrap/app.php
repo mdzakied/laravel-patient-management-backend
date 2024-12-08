@@ -23,7 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (AuthenticationException $e, Request $request) {
             if ($request->is('api/*')) {
                 return response()->json([
-                    'message' => $e->getMessage(),
+                    'message' => 'Unauthorized Access',
                 ], 401);
             }
         });

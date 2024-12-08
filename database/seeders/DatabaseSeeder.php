@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +14,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Create Default Admin
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@example.com',
+            'password' => bcrypt('admin123'),
+            'role' => 'admin',
+            'remember_token' => Str::random(10),
+        ]);
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Create 5 Admin users, each with 2 patients
+        User::factory()
+            ->count(5) // 5 Admin
+            ->state(['role' => 'admin']) // Set role as 'admin'
+            ->hasPatients(2) // Each Admin has 2 Patients
+            ->create();
     }
 }

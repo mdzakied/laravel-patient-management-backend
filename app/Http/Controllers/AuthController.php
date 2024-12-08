@@ -121,7 +121,7 @@ class AuthController extends Controller
     }
 
     // Logout
-    public function logout(Request $request)
+    public function logout()
     {
         // Get token
         try {
