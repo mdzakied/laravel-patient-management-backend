@@ -60,7 +60,7 @@ Here're some of the project's API Endpoint :
 <h3>Query Parameters Explanation</h3>
 
 - **name**: (Optional) Filter patients by name. Example: `name=John` will return patients whose name is "John".
-- **is_active**: (Optional) Filter by patient status. Example: `is_active=true` will return only active patients.
+- **is_active**: (Optional) Filter by patient status. Example: `is_active=1` will return only active patients. Valid values are `1` for active patient, `0` for inactive patient, the default is_active will be both
 - **sort**: (Optional) Define the field by which the results should be sorted. Valid values are `name`, `date_of_birth`, `created_at`, or `updated_at`. If the value is invalid, the default sort will be `name`.
 - **direction**: (Optional) Define the sorting order. Possible values are `asc` (ascending) or `desc` (descending). Default value: `desc`. Example: `direction=desc` will return results sorted in descending order.
 - **page**: (Optional) Define the page number for pagination. Default value: `1`. Example: `page=1` will return the first page of results.
