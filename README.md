@@ -1,66 +1,153 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1 align="center" id="title">laravel-patient-management-backend</h1>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<p align="center" id="description">Building a REST API for Patient Management System with Multi-User Access.</p>
 
-## About Laravel
+<br>
+<h2 align="center">ERD (Entity-Relationship Diagram)</h2>
+<div style="display: flex; justify-content: center;">
+  <img width="100%" alt="ERD for Patient Management System" src="https://github.com/user-attachments/assets/7a0a6e8c-9915-4331-94e8-54436a031b85">
+</div>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<br>
+<h2>🚀 Requirements</h2>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Here're some of the project's requirments :
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Case Study
+The app need to show your capability to handle:
+1. Authentication (Login - you can use dummy/sample account) ✔️
+2. CRUD proses (Create, Read, Update, Delete) ✔️
+3. Data Search + Input Validation ✔️
+4. Data Pagination ✔️
 
-## Learning Laravel
+Requirements :
+1. API hanya dapat di akses menggunakan JWT Token ✔️
+2. Data tidak boleh kembar ✔️
+3. Tambahkan validasi lain yang dirasa perlu ✔️
+4. Upload source code ke github sebagai public repository ✔️
+5. Siapkan postman untuk API tersebut ✔️
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<br>
+<h2>🌐 Api Endpoint</h2>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Here're some of the project's API Endpoint :
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<h3>Authentication</h3>
 
-## Laravel Sponsors
+| Endpoint                     | Method | Authentication Required | Description                                    | Request Body                                                                                  | Query Parameters |
+|------------------------------|--------|-------------------------|------------------------------------------------|------------------------------------------------------------------------------------------------|-------------------|
+| `/auth/login`                 | POST   | None                    | Login User as Admin or Viewer                 | `{ "email": "admin@example.com", "password": "admin123" }`                                      | None              |
+| `/auth/register-admin`        | POST   | Admin                   | Register a new Admin                          | `{ "name": "Admin New", "email": "adminNew@example.com", "password": "adminNew123" }`           | None              |
+| `/auth/register-viewer`       | POST   | Admin                   | Register a new Viewer                         | `{ "name": "Viewer", "email": "viewer@example.com", "password": "viewer123" }`                  | None              |
+| `/auth/logout`                | POST   | Admin                   | Logout                                        | No body                                                                                         | None              |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+<h3>Patient Management</h3>
 
-### Premium Partners
+| Endpoint                     | Method | Authentication Required | Description                                       | Request Body                                                                                  | Query Parameters           |
+|------------------------------|--------|-------------------------|---------------------------------------------------|------------------------------------------------------------------------------------------------|----------------------------|
+| `/patients`                   | POST   | Admin                   | Add a new patient                                | `{ "name": "John Doe", "date_of_birth": "1985-06-15", "gender": "male", "phone_number": "1234567890", "email": "johndoe@example.com", "address": "123 Main Street", "emergency_contact_name": "Jane Doe", "emergency_contact_phone": "0987654321" }` | None                       |
+| `/patients`                   | GET    | Viewer or Admin          | Show all patients                               | None                                                                                           | 'name=John&is_active=1&sort=created_at&direction=desc&page=1&size=2'  |
+| `/patients/{id}`              | GET    | Viewer or Admin          | Show a specific patient                         | None (URL params: `id` for the patient ID)                                                     | None                       |
+| `/patients/{id}`              | PUT    | Admin                   | Edit patient details                            | `{ "name": "John Doe", "date_of_birth": "1990-05-15", "gender": "male", "phone_number": "123456789", "email": "john.doe@example.com", "address": "123 Main Street", "emergency_contact_name": "Jane Doe", "emergency_contact_phone": "987654321" }` | None                       |
+| `/patients/{id}`              | DELETE | Admin                   | Delete a patient                                | None (URL params: `id` for the patient ID)                                                     | None                       |
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+<h3>Data Constraints</h3>
 
-## Contributing
+- **Name**: Must be unique for each patient. Two patients cannot share the same name.
+- **Email**: Must be unique for each patient. Two patients cannot share the same email address.
+- **Phone Number**: Must be unique for each patient. Two patients cannot share the same phone number.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<h3>Query Parameters Explanation</h3>
 
-## Code of Conduct
+- **name**: (Optional) Filter patients by name. Example: `name=John` will return patients whose name is "John".
+- **is_active**: (Optional) Filter by patient status. Example: `is_active=true` will return only active patients.
+- **sort**: (Optional) Define the field by which the results should be sorted. Valid values are `name`, `date_of_birth`, `created_at`, or `updated_at`. If the value is invalid, the default sort will be `name`.
+- **direction**: (Optional) Define the sorting order. Possible values are `asc` (ascending) or `desc` (descending). Default value: `desc`. Example: `direction=desc` will return results sorted in descending order.
+- **page**: (Optional) Define the page number for pagination. Default value: `1`. Example: `page=1` will return the first page of results.
+- **size**: (Optional) Define the number of results per page. Default value: `10`. Example: `size=2` will return 2 results per page.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+  
+<h2>🛠️ Installation Steps :</h2>
 
-## Security Vulnerabilities
+<p>1. Clone Repository</p>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+git clone https://github.com/mdzakied/laravel-patient-management-backend.git
+```
 
-## License
+<br />
+<p>2. Prepare database (create db_patient_management in mySql using xampp) and enable xampp </p>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<br />
+<p>3. Complete configuration in file .env</p>
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=db_patient_management
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+<br />
+<p>4. Complete configuration in config/database.php</p>
+
+```
+        'mysql' => [
+            'driver' => 'mysql',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'db_hotel'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => env('DB_CHARSET', 'utf8mb4'),
+            'collation' => env('DB_COLLATION', 'utf8mb4_general_ci'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+```
+
+<br />
+<p>5. Run Command</p>
+
+```
+composer install
+```
+```
+php artisan migrate:fresh
+```
+```
+php artisan db:seed 
+```
+
+<br />
+<p>6. Run Project for Development</p>
+
+```
+php artisan serve  
+```
+
+<h2>📃 Docs API</h2>
+  
+Postman :
+* Run Project
+* Open Postman and Import for collections docs/Patient Management.postman_collection.json
+* Open Postman and Import for environments docs/Patient Management.postman_environment.json
+
+
+<h2>💻 Built with</h2>
+
+Technologies used in the project :
+
+*   MySql
+*   Laravel 11
+*   JWT Auth
+*   Postman
