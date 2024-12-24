@@ -1,6 +1,6 @@
 <h1 align="center" id="title">laravel-patient-management-backend</h1>
 
-<p align="center" id="description">Building a REST API for Patient Management System with Multi-User Access.</p>
+<p align="center" id="description">RESTful API for Patient Management System with Multi-User Access.</p>
 
 <br>
 <h2 align="center">ERD (Entity-Relationship Diagram)</h2>
@@ -13,19 +13,11 @@
 
 Here're some of the project's requirments :
 
-Case Study
 The app need to show your capability to handle:
 1. Authentication (Login - you can use dummy/sample account) ✔️
 2. CRUD proses (Create, Read, Update, Delete) ✔️
 3. Data Search + Input Validation ✔️
 4. Data Pagination ✔️
-
-Requirements :
-1. API hanya dapat di akses menggunakan JWT Token ✔️
-2. Data tidak boleh kembar ✔️
-3. Tambahkan validasi lain yang dirasa perlu ✔️
-4. Upload source code ke github sebagai public repository ✔️
-5. Siapkan postman untuk API tersebut ✔️
 
 <br>
 <h2>🌐 Api Endpoint</h2>
