@@ -8,7 +8,7 @@
 
 ---
 
-## Project Overview 🌟
+## 🌟 Project Overview 
 
 The **Patiently - Webservice API** is a comprehensive REST API built to manage patient data. It supports core functionalities such as:
 
@@ -19,7 +19,7 @@ The **Patiently - Webservice API** is a comprehensive REST API built to manage p
 
 ---
 
-## Technologies Used ⚙️
+## ⚙️ Technologies Used 
 
 - **Backend:** Laravel 11
 - **Database:** MySQL
