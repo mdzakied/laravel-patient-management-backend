@@ -15,7 +15,7 @@ The **Patiently - Webservice API** is a comprehensive REST API built to manage p
 - **Patient Management 🧑‍⚕️:** Manage patient information.
 - **Role-Based Access Control 🔐:** Secure user roles and permissions using JWT Auth.
 - **Secure Authentication & Authorization 🔑:** Ensure safe access control for various user roles (e.g., admin, viewer).
-- **Data Validation & API Testing 🧪:** Ensuring smooth integration and functionality through Postman.
+- **Testing with Postman 🧪:** Validate API functionality and ensure smooth integration.
 
 ---
 
