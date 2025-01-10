@@ -21,10 +21,10 @@ The **Patiently - Webservice API** is a comprehensive REST API built to manage p
 
 ## ⚙️ Technologies Used 
 
-- **Backend:** Laravel 11
-- **Database:** MySQL
-- **Security:** JWT Auth for authentication and authorization
-- **API Documentation:** Postman for endpoint documentation and testing
+- **Backend 💻:** Laravel 11
+- **Database 🗄️:** MySQL
+- **Security 🔐:** JWT Auth for authentication and authorization
+- **API Documentation 📜:** Postman for endpoint documentation and testing
 
 ---
 
